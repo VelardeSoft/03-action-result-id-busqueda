@@ -11,13 +11,23 @@ namespace Backend.Controllers
         [HttpGet("All")] // All regresa todas las personas
         public List<People> GetPeople() => Repository.People;
 
-        [HttpGet("{id}")]
-        public People Get(int id) => Repository.People.First(p => p.Id == id); // Función de primera clase
-                                                                               // First invoca a todo el listado 
+        // ACTION RESULT IMPLEMENT, para no tronar el servicio si el id no existe
+
+        [HttpGet("{id}")]  
+        public ActionResult<People> Get(int id)
+        {
+            var people = Repository.People.FirstOrDefault(p => p.Id == id);
+
+            if (people == null)
+            {
+                return NotFound();
+            }
+            return Ok(people);
+        }
+                                                                               
         [HttpGet("search/{search}")]
         public List<People> Get(string search) => 
             Repository.People.Where(p => p.Name.ToUpper().Contains(search.ToUpper())).ToList();
-
     }
 
     public class Repository  // Para simular database, lista de personas 
