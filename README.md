@@ -1,3 +1,3 @@
-# Solicito HTTP Filtrado
+# Action Result for search ID
 
-<img width="551" height="616" alt="Image" src="https://github.com/user-attachments/assets/d74ced7e-a924-497c-841e-d8cda326eb56" />
+<img width="751" height="671" alt="Image" src="https://github.com/user-attachments/assets/11c3d366-4c1c-494b-860b-b2b8e16e6f9f" />
