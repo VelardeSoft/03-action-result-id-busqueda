@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
-// Desarrollado por Néstor Velarde
-
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
@@ -12,6 +10,13 @@ namespace Backend.Controllers
     {
         [HttpGet("All")] // All regresa todas las personas
         public List<People> GetPeople() => Repository.People;
+
+        [HttpGet("{id}")]
+        public People Get(int id) => Repository.People.First(p => p.Id == id); // Función de primera clase
+                                                                               // First invoca a todo el listado 
+        [HttpGet("search/{search}")]
+        public List<People> Get(string search) => 
+            Repository.People.Where(p => p.Name.ToUpper().Contains(search.ToUpper())).ToList();
 
     }
 
